@@ -1,9 +1,9 @@
 # EOOP-AnimalShelterMenagement
 A small c++ project for uni.
-#Animal Shelter Management System
+# Animal Shelter Management System
 This project is a software system designed to manage various aspects of an animal shelter, including animals, staff, volunteers, adoptions, and donations. The system provides users with the ability to add, remove, and update information about animals, staff members, volunteers, adopters, and donations. It also includes search and display functionalities for easier data management.
 
-#Class and Data Structures Overview
+# Class and Data Structures Overview
 The Animal Shelter Management System is built with the following classes:
 
 AnimalShelter: This class serves as the main interface for the management system. It contains methods for adding, removing, and updating animals, staff, volunteers, adoptions, and donations. It also provides search functionality for animals, adoptions, and donations, as well as methods for managing adopters.
@@ -18,7 +18,7 @@ Adoption: This class represents an adoption process, including the adopter's inf
 
 Donation: This class represents a monetary or material donation to the shelter. It includes information such as the donor's name, donation amount or item description, and date of donation. Methods in this class handle recording and tracking donations and setting the donation attributes using setters.
 
-#Restrictions, Limits, Assumptions
+# Restrictions, Limits, Assumptions
 There are several restrictions, limits, and assumptions that should be kept in mind when using the Animal Shelter Management System:
 
 Animal IDs, Adoption IDs, Donation IDs, and Staff IDs are unique positive integers.
