@@ -1,0 +1,10 @@
+"C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.1.1/bin/ninja/win/x64/ninja.exe" null --profiling-format=google-trace --profiling-output=CMakeFiles\clion-event-trace.json -G Ninja -S C:\Users\res_2\EITIprog\c++\new_lab_project -B C:\Users\res_2\EITIprog\c++\new_lab_project\cmake-build-debug-event-trace
+CMake Warning:
+  Ignoring extra path from command line:
+
+   "C:/Users/res_2/EITIprog/c++/new_lab_project/cmake-build-debug-event-trace/null"
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/res_2/EITIprog/c++/new_lab_project/cmake-build-debug-event-trace

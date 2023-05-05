@@ -1,0 +1,3 @@
+C:/Users/res_2/EITIprog/c++/new_lab_project/cmake-build-debug/CMakeFiles/new_lab_project.dir
+C:/Users/res_2/EITIprog/c++/new_lab_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/res_2/EITIprog/c++/new_lab_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,11 @@
+# ninja log v5
+121	3132	7049175580319341	CMakeFiles/new_lab_project.dir/Adoption.cpp.obj	1809904cd0960612
+3	1109	7048119093193199	CMakeFiles/new_lab_project.dir/Volunteer.cpp.obj	ebf34603aaba40b1
+3	1317	7049187141844205	CMakeFiles/new_lab_project.dir/test.cpp.obj	880bf47c18fc1df4
+62	2871	7049175577712709	CMakeFiles/new_lab_project.dir/Animal.cpp.obj	b80a369d67e752c1
+186	2229	7049175571265935	CMakeFiles/new_lab_project.dir/AnimalShelter.cpp.obj	5396eb3cd0b8f94b
+123	5341	7048114745818858	CMakeFiles/new_lab_project.dir/Staff.cpp.obj	abda9d1d4be31b48
+1317	1630	7049187144947485	new_lab_project.exe	cca8936650d9cc35
+191	5078	7048114743193661	CMakeFiles/new_lab_project.dir/Donation.cpp.obj	b5f48ba55e4b831d
+2	342	7049394873000882	build.ninja	648d2ddcadac7f12
+63	1921	7049184340861432	CMakeFiles/new_lab_project.dir/Interface.cpp.obj	c6d325332e223907
