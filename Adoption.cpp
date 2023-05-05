@@ -100,6 +100,6 @@ ostream &operator<<(ostream &os, const Adoption &adoption) {
         os << "Rejected";
     }
     os << endl << "Adopter: " << adoption.getAdopter() << endl << "Adopter information: " << adoption.getAdopterInfo() << endl;
-    os << "Animal information: " << endl << adoption.getAnimal();
+    os << "Animal information: " << endl << *(adoption.getAnimal());
     return os;
 }
