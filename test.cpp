@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 #include "AnimalShelter.h"
 
 using namespace std;
@@ -322,6 +324,7 @@ int main(){
                 } else {
                     cout << "Failed to add the animal. An animal with the same ID already exists! " << endl;
                 }
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 2: //Remove animal
@@ -333,6 +336,7 @@ int main(){
                 } else {
                     cout << "Failed to remove the animal. Animal not found! " << endl;
                 }
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 3: // Update animal
@@ -352,6 +356,7 @@ int main(){
                 animal->setAge(age);
                 animal->setHealthStatus(healthStatus);
                 cout << "Animal updated successfully." << endl;
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 4: //Add staff
@@ -367,6 +372,7 @@ int main(){
                 } else {
                     cout << "Failed to add the staff memeber. A member with the same ID already exists! " << endl;
                 }
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 5: //Remove Staff
@@ -378,6 +384,7 @@ int main(){
                 } else {
                     cout << "Failed to remove the staff member. Member not found! " << endl;
                 }
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 6: //Update staff
@@ -395,6 +402,7 @@ int main(){
                 staff->setRole(role);
                 staff->setSchedule(schedule);
                 cout << "Staff member updated successfully." << endl;
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 7: //Add Volunteer
@@ -411,6 +419,7 @@ int main(){
                 }else{
                     cout<<"Failed to add the volunteer. A volunteer with the same ID already exists!"<<endl;
                 }
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 8: //Remove volunteer
@@ -422,6 +431,7 @@ int main(){
                 }else{
                     cout<<"Failed to remove the volunteer. A volunteer with the same ID does not exist!"<<endl;
                 }
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 9: //Update volunteer
@@ -440,6 +450,7 @@ int main(){
                 volunteer->setSchedule(schedule);
                 volunteer->setAssignedTasks(task);
                 cout << "Volunteer updated successfully." << endl;
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 10: // Create adoption
@@ -457,6 +468,7 @@ int main(){
                 shelter.createAdoption(adoption);
                 animal->setAdoptionStatus(Animal::ADOPTED);
                 cout << "Adoption record created successfully." << endl;
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 11: // Update adoption status
@@ -483,8 +495,10 @@ int main(){
                         cout << "Invalid option. Adoption status not updated!" << endl;
                         break;
                 }
+                adoption->setStatus(status); // getAnimal()->setAdoptionStatus(static_cast<Animal::AnimalStatus>(status));
                 adoption->getAnimal()->setAdoptionStatus(static_cast<Animal::AnimalStatus>(status));
                 cout << "Adoption status updated successfully." << endl;
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 12: // Finalize adoption
@@ -501,6 +515,7 @@ int main(){
                 }
                 adoption->finalizeAdoption();
                 cout << "Adoption finalized successfully." << endl;
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 13: //Record donation
@@ -517,11 +532,13 @@ int main(){
                 } else {
                     cout << "Failed to add the donation. A donation with the same ID already exists! " << endl;
                 }
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 14: //View all animals
             {
                 shelter.printAnimals(cout);
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 15: //View all staff and volunteers
@@ -529,16 +546,19 @@ int main(){
                 shelter.printVolunteers(cout);
                 printSeparator();
                 shelter.printStaff(cout);
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 16: //View all adoptions
             {
                 shelter.printAdoptions(cout);
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 17: //View all donations
             {
                 shelter.printDonations(cout);
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 18: //Run all tests
@@ -549,6 +569,7 @@ int main(){
                 testCase4();
                 testCase5();
                 testCase6();
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
             case 19: // quit
@@ -559,6 +580,7 @@ int main(){
             default:
             {
                 cout<<"Invalid choice. Please enter a number between 1 and 19"<< endl;
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 break;
             }
         }
@@ -566,5 +588,3 @@ int main(){
 
     return 0;
 }
-
-
