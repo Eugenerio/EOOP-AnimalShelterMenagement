@@ -351,6 +351,7 @@ int main(){
                 Animal *animal = shelter.searchAnimal(id);
                 if (animal == nullptr) {
                     cout << "Failed to update the animal. Animal not found!" << endl;
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
                     break;
                 }
                 string name = promptString("Enter the animal's new name: ");
@@ -399,6 +400,7 @@ int main(){
                 Staff* staff = shelter.searchVolunteerOrStaff(id);
                 if(staff == nullptr){
                     cout<<"Failed to update the staff member. Staff member not found!" << endl;
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
                     break;
                 }
                 string name = promptString("Enter the staff member's new name: ");
@@ -446,6 +448,7 @@ int main(){
                 Volunteer* volunteer = dynamic_cast<Volunteer*>(shelter.searchVolunteerOrStaff(id));
                 if (volunteer == nullptr) {
                     cout << "Failed to update the volunteer. Volunteer not found!" << endl;
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
                     break;
                 }
                 string name = promptString("Enter the volunteer's new name: ");
@@ -465,6 +468,7 @@ int main(){
                 Animal* animal = shelter.searchAnimal(animalId);
                 if (animal == nullptr) {
                     cout << "Failed to create adoption record. Animal not found!" << endl;
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
                     break;
                 }
                 int adopterId = promptInt("Enter the ID of the adopter: ");
@@ -483,6 +487,7 @@ int main(){
                 Adoption* adoption = shelter.searchAdoption(adoptionId);
                 if (adoption == nullptr) {
                     cout << "Failed to update adoption status. Adoption record not found!" << endl;
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
                     break;
                 }
                 int statusOption = promptInt("Enter the new adoption status:\n1 - Pending\n2 - Approved\n3 - Rejected\n");
@@ -499,6 +504,7 @@ int main(){
                         break;
                     default:
                         cout << "Invalid option. Adoption status not updated!" << endl;
+                        std::this_thread::sleep_for(std::chrono::seconds(2));
                         break;
                 }
                 adoption->setStatus(status); // getAnimal()->setAdoptionStatus(static_cast<Animal::AnimalStatus>(status));
@@ -513,10 +519,12 @@ int main(){
                 Adoption* adoption = shelter.searchAdoption(adoptionId);
                 if (adoption == nullptr) {
                     cout << "Failed to finalize adoption. Adoption record not found!" << endl;
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
                     break;
                 }
                 if (adoption->getAnimal()->getAdoptionStatus() != Animal::AnimalStatus::ADOPTED) {
                     cout << "Failed to finalize adoption. Animal is not marked as adopted." << endl;
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
                     break;
                 }
                 adoption->finalizeAdoption();
