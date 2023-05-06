@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <thread>
 #include <chrono>
+#include <conio.h> // For _getch() on Windows
 #include "AnimalShelter.h"
 
 using namespace std;
@@ -301,6 +302,11 @@ void testCase6(){
 //}
 
 
+void waitForSpacebar() {
+    while (_getch() != ' ') {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+}
 int main(){
     AnimalShelter shelter;
     int choice;
@@ -538,7 +544,7 @@ int main(){
             case 14: //View all animals
             {
                 shelter.printAnimals(cout);
-                std::this_thread::sleep_for(std::chrono::seconds(10));
+                waitForSpacebar();
                 break;
             }
             case 15: //View all staff and volunteers
@@ -546,19 +552,19 @@ int main(){
                 shelter.printVolunteers(cout);
                 printSeparator();
                 shelter.printStaff(cout);
-                std::this_thread::sleep_for(std::chrono::seconds(20));
+                waitForSpacebar();
                 break;
             }
             case 16: //View all adoptions
             {
                 shelter.printAdoptions(cout);
-                std::this_thread::sleep_for(std::chrono::seconds(15));
+                waitForSpacebar();
                 break;
             }
             case 17: //View all donations
             {
                 shelter.printDonations(cout);
-                std::this_thread::sleep_for(std::chrono::seconds(10));
+                waitForSpacebar();
                 break;
             }
             case 18: //Run all tests
@@ -569,7 +575,7 @@ int main(){
                 testCase4();
                 testCase5();
                 testCase6();
-                std::this_thread::sleep_for(std::chrono::seconds(60));
+                waitForSpacebar();
                 break;
             }
             case 19: // quit
@@ -580,7 +586,7 @@ int main(){
             default:
             {
                 cout<<"Invalid choice. Please enter a number between 1 and 19"<< endl;
-                std::this_thread::sleep_for(std::chrono::seconds(2));
+                waitForSpacebar();
                 break;
             }
         }
