@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "AnimalShelter.h"
 
 using namespace std;
@@ -303,6 +304,7 @@ int main(){
     int choice;
 
     do {
+        system("cls");
         printMainMenu();
         choice = promptInt("Enter your choice (1-15): ");
         switch (choice) {
