@@ -490,18 +490,24 @@ int main(){
             }
             case 18: //Run all tests
             {
+                printSeparator();
                 testCase1();
-                cout << "Test passed" << endl;
+                cout << "Test#1 passed" << endl;
+                printSeparator();
                 testCase2();
-                cout << "Test passed" << endl;
+                cout << "Test#2  passed" << endl;
+                printSeparator();
                 testCase3();
-                cout << "Test passed" << endl;
+                cout << "Test#3 passed" << endl;
+                printSeparator();
                 testCase4();
-                cout << "Test passed" << endl;
+                cout << "Test#4 passed" << endl;
+                printSeparator();
                 testCase5();
-                cout << "Test passed" << endl;
+                cout << "Test#5 passed" << endl;
+                printSeparator();
                 testCase6();
-                cout << "Test passed" << endl;
+                printSeparator();
                 cout << "End of the tests" << endl;
                 printSeparator();
                 cout << "Press 'Space' to go to the menu" << endl;
@@ -528,5 +534,4 @@ int main(){
 
     return 0;
 }
-
 
