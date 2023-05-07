@@ -281,27 +281,6 @@ void testCase6(){
     cout<< shelter << endl;
 }
 
-//void print_menu() {
-//    cout << "===== MENU =====" << endl;
-//    cout << "1. Add a new animal" << endl;
-//    cout << "2. Remove an animal" << endl;
-//    cout << "3. Update animal information" << endl;
-//    cout << "4. Print the list of animals" << endl;
-//    cout << "5. Add a new staff member" << endl;
-//    cout << "6. Remove a staff member" << endl;
-//    cout << "7. Update staff information" << endl;
-//    cout << "8. Add a new volunteer" << endl;
-//    cout << "9. Remove a volunteer" << endl;
-//    cout << "10. Update volunteer information" << endl;
-//    cout << "11. Add a new adopter" << endl;
-//    cout << "12. Remove an adopter" << endl;
-//    cout << "13. Print the list of adopters" << endl;
-//    cout << "14. Update adoption status" << endl;
-//    cout << "15. Quit" << endl;
-//    cout << "================" << endl;
-//}
-
-
 void waitForSpacebar() {
     while (_getch() != ' ') {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
