@@ -4,6 +4,7 @@
 #include <thread>
 #include <chrono>
 #include <conio.h> // For _getch() on Windows
+#include <cassert>
 #include "AnimalShelter.h"
 
 using namespace std;
@@ -79,164 +80,85 @@ void printMainMenu() {
     cout << endl;
 }
 
+
 void testCase1() {
     // Test case 1: Add and remove animals
-    std::cout << "Test case 1: Add and remove animals" << std::endl;
     AnimalShelter shelter;
     Animal animal1(1, "Buddy", "Dog", 3, "Healthy", Animal::AnimalStatus::AVAILABLE);
     Animal animal2(2, "Molly", "Cat", 5, "Healthy", Animal::AnimalStatus::ADOPTED);
 
     // Add animals
-    shelter.addAnimal(animal1);
-    shelter.addAnimal(animal2);
-
-    // Print the updated list of animals
-    std::cout << "Animals added:" << std::endl << std::endl;
-    shelter.printAnimals(std::cout);
+    assert(shelter.addAnimal(animal1));
+    assert(shelter.addAnimal(animal2));
 
     // Remove an animal
-    shelter.removeAnimal(1);
-
-    // Print the updated list of animals
-    std::cout << "Animals after removal:" << std::endl;
-    shelter.printAnimals(std::cout);
+    assert(shelter.removeAnimal(1));
 
     // Attempt to remove an animal that does not exist (incorrect case)
-    std::cout << "Attempt to remove non-existent animal:" << std::endl;
-    if (!shelter.removeAnimal(3)) {
-        std::cout << "Animal not found, cannot remove." << std::endl;
-    }
+    assert(!shelter.removeAnimal(3));
 }
 
 void testCase2() {
     // Test case 2: Add and remove staff
-    std::cout << "Test case 2: Add and remove staff" << std::endl;
     AnimalShelter shelter;
     Staff staff1(1, "Bob", "Manager", "Monday - Friday");
-    shelter.addStaff(staff1);
-
     Staff staff2(2, "Sarah", "Vet", "Saturday, Sunday");
-    shelter.addStaff(staff2);
 
-    // Print the updated list of staff
-    std::cout << "Staff added:" << std::endl;
-    shelter.printStaff(std::cout);
+    // Add staff
+    assert(shelter.addStaff(staff1));
+    assert(shelter.addStaff(staff2));
 
     // Remove staff
-    shelter.removeStaff(2);
-
-    // Print the updated list of staff
-    std::cout << "Staff after removal:" << std::endl;
-    shelter.printStaff(std::cout);
+    assert(shelter.removeStaff(2));
 
     // Attempt to remove staff that does not exist (incorrect case)
-    std::cout << "Attempt to remove non-existent staff:" << std::endl;
-    if (!shelter.removeStaff(3)) {
-        std::cout << "Staff not found, cannot remove." << std::endl;
-    }
+    assert(!shelter.removeStaff(3));
 }
 
 void testCase3() {
     // Test case 3: Add and remove volunteers
-    std::cout << "Test case 3: Add and remove volunteers" << std::endl;
     AnimalShelter shelter;
     Volunteer volunteer1(1, "Roman", "Monday, Wednesday, Friday");
-    shelter.addVolunteer(volunteer1);
-    list<string> tasks1 {"Feed the animals", "Clean the kennels", "Walk the dogs"};
-    volunteer1.setAssignedTasks(tasks1);
-    list<string> tasks2{"Conduct a survey on a particular topic.",
-                        "Organize a charity event for a cause.",
-                        "Create social media content for a non-profit organization."};
-
-
     Volunteer volunteer2(2, "Jane", "Tuesday, Thursday, Saturday");
-    shelter.addVolunteer(volunteer2);
-    volunteer2.setAssignedTasks(tasks2);
 
-    // Print the updated list of volunteers
-    std::cout << "Volunteers added:" << std::endl;
-    shelter.printVolunteers(std::cout);
+    // Add volunteers
+    assert(shelter.addVolunteer(volunteer1));
+    assert(shelter.addVolunteer(volunteer2));
 
     // Remove a volunteer
-    shelter.removeVolunteer(1);
-
-    // Print the updated list of volunteers
-    std::cout << "Volunteers after removal:" << std::endl;
-    shelter.printVolunteers(std::cout);
+    assert(shelter.removeVolunteer(1));
 
     // Attempt to remove a volunteer that does not exist (incorrect case)
-    std::cout << "Attempt to remove non-existent volunteer:" << std::endl;
-    if (!shelter.removeVolunteer(3)) {
-        std::cout << "Volunteer not found, cannot remove." << std::endl;
-    }
+    assert(!shelter.removeVolunteer(3));
 }
 
 void testCase4() {
-// Test case 4: Add and finalize adoptions
-    std::cout << "\n Test case 4: Add and finalize adoptions" << std::endl;
+    // Test case 4: Add and finalize adoptions
     AnimalShelter shelter;
     Animal animal(1, "Charlie", "Mixed Breed", 2, "Healthy", Animal::AVAILABLE);
     shelter.addAnimal(animal);
     Adoption adoption(1, "25 years old", &animal, "John Doe");
-    bool adoptionCreated = shelter.createAdoption(adoption);
 
-    if (adoptionCreated) {
-        std::cout << "Adoption record added successfully!" << std::endl;
-    } else {
-        std::cout << "Failed to add adoption record" << std::endl;
-    }
+    // Create adoption
+    assert(shelter.createAdoption(adoption));
 
-    bool adoptionFinalized = shelter.finalizeAdoption(adoption.getId());
-
-    if (adoptionFinalized) {
-        std::cout << "Adoption finalized successfully!" << std::endl;
-    } else {
-        std::cout << "Failed to finalize adoption" << std::endl;
-    }
-
-//    The list after running testCase4() would be an empty list because the adoption
-//    has been finalized and the animal is no longer available for adoption. The AnimalShelter's
-//    list of available animals will not contain the animal that was adopted.
+    // Finalize adoption
+    assert(shelter.finalizeAdoption(adoption.getId()));
 }
 
 void testCase5() {
-// Test case 5: Record and search donations
-    std::cout << "\n Test case 5: Record and search donations" << std::endl;
+    // Test case 5: Record and search donations
     AnimalShelter shelter;
     Donation donation1(1, "Philanthropist", "Money $", "2022-12-01", 1000);
     Donation donation2(2, "Animal lover", "pack of Cat food", "2022-12-02", 2);
+
     // Record donations
-    shelter.recordDonation(donation1);
-    shelter.recordDonation(donation2);
+    assert(shelter.recordDonation(donation1));
+    assert(shelter.recordDonation(donation2));
 
-// Print the updated list of donations
-    std::cout << "Donations recorded:" << std::endl;
-    shelter.printDonations(std::cout);
-
-// Search for a donation
+    // Search for a donation
     Donation *foundDonation = shelter.searchDonation(1);
-    if (foundDonation) {
-        std::cout << "Found donation:" << std::endl;
-        std::cout << *foundDonation << std::endl;
-    } else {
-        std::cout << "Donation not found." << std::endl;
-    }
-//    // Search for donations by donor name
-//    std::cout << "Search for donations by donor name:" << std::endl;
-//    std::vector<Donation> donationsByDonor = shelter.searchDonationsByDonor("Philanthropist");
-//    std::cout << "Donations by Philanthropist:" << std::endl;
-//    for (const auto& donation : donationsByDonor) {
-//        std::cout << donation.toString() << std::endl;
-//    }
-//
-//// Search for donations by donation type
-//    std::cout << "Search for donations by donation type:" << std::endl;
-//    std::vector<Donation> donationsByType = shelter.searchDonationsByType("Money $");
-//    std::cout << "Donations of type Money $:" << std::endl;
-//    for (const auto& donation : donationsByType) {
-//        std::cout << donation.toString() << std::endl;
-//    }
-
+    assert(foundDonation != nullptr);
 }
 
 void testCase6(){
@@ -531,6 +453,9 @@ int main(){
             case 14: //View all animals
             {
                 shelter.printAnimals(cout);
+                printSeparator();
+                cout << "Press 'Space' to go to the menu" << endl;
+                printSeparator();
                 waitForSpacebar();
                 break;
             }
@@ -539,29 +464,48 @@ int main(){
                 shelter.printVolunteers(cout);
                 printSeparator();
                 shelter.printStaff(cout);
+                printSeparator();
+                cout << "Press 'Space' to go to the menu" << endl;
+                printSeparator();
                 waitForSpacebar();
                 break;
             }
             case 16: //View all adoptions
             {
                 shelter.printAdoptions(cout);
+                printSeparator();
+                cout << "Press 'Space' to go to the menu" << endl;
+                printSeparator();
                 waitForSpacebar();
                 break;
             }
             case 17: //View all donations
             {
                 shelter.printDonations(cout);
+                printSeparator();
+                cout << "Press 'Space' to go to the menu" << endl;
+                printSeparator();
                 waitForSpacebar();
                 break;
             }
             case 18: //Run all tests
             {
                 testCase1();
+                cout << "Test passed" << endl;
                 testCase2();
+                cout << "Test passed" << endl;
                 testCase3();
+                cout << "Test passed" << endl;
                 testCase4();
+                cout << "Test passed" << endl;
                 testCase5();
+                cout << "Test passed" << endl;
                 testCase6();
+                cout << "Test passed" << endl;
+                cout << "End of the tests" << endl;
+                printSeparator();
+                cout << "Press 'Space' to go to the menu" << endl;
+                printSeparator();
                 waitForSpacebar();
                 break;
             }
@@ -573,6 +517,9 @@ int main(){
             default:
             {
                 cout<<"Invalid choice. Please enter a number between 1 and 19"<< endl;
+                printSeparator();
+                cout << "Press 'Space' to go to the menu" << endl;
+                printSeparator();
                 waitForSpacebar();
                 break;
             }
@@ -581,3 +528,5 @@ int main(){
 
     return 0;
 }
+
+
