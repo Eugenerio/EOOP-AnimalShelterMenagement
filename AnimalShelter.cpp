@@ -6,16 +6,16 @@ using namespace std;
 // Helper function to search for a staff member or volunteer
 Staff* AnimalShelter::searchVolunteerOrStaff(int id) {
     // Search for staff member with given id
-    for (const auto& staff : staffMembers) {
+    for (auto& staff : staffMembers) {
         if (staff.getId() == id) {
-            return const_cast<Staff*>(&staff);
+            return &staff;
         }
     }
 
     // Search for volunteer with given id
-    for (const auto& volunteer : volunteers) {
+    for (auto& volunteer : volunteers) {
         if (volunteer.getId() == id) {
-            return const_cast<Volunteer*>(&volunteer);
+            return &volunteer;
         }
     }
 
